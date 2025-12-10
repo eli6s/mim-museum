@@ -1,0 +1,37 @@
+# build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+
+# build outputs
+*.dll
+*.exe
+*.pdb
+
+# nuget
+packages/
+*.nupkg
+
+# potentially sensitive data
+*connectionStrings.config
+appsettings.local.json
+*.secret.*
+
+# user-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+
+# visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# misc
+**/.DS_Store
+**/.D_S_Store
+clrs.txt

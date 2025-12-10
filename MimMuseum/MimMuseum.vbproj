@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F6B55F76-E537-4CEA-9ACB-F8C72D382ADB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>MimMuseum.My.MyApplication</StartupObject>
+    <RootNamespace>MimMuseum</RootNamespace>
+    <AssemblyName>MimMuseum</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>MimMuseum.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>MimMuseum.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net48\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
+    <Reference Include="CuoreUI, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CuoreUI.Winforms.2025.10.18.1\lib\net472\CuoreUI.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="ReaLTaiizor, Version=3.8.1.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReaLTaiizor.3.8.1.3\lib\net48\ReaLTaiizor.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="components\auth\login.Designer.vb">
+      <DependentUpon>login.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\auth\login.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\auth\new_pass.Designer.vb">
+      <DependentUpon>new_pass.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\auth\new_pass.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\auth\reset_pass.Designer.vb">
+      <DependentUpon>reset_pass.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\auth\reset_pass.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\boutique\customers.Designer.vb">
+      <DependentUpon>customers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\boutique\customers.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\boutique\dashboard.Designer.vb">
+      <DependentUpon>dashboard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\boutique\dashboard.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\boutique\items.Designer.vb">
+      <DependentUpon>items.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\boutique\items.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\boutique\pos.Designer.vb">
+      <DependentUpon>pos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\boutique\pos.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\boutique\transactions.Designer.vb">
+      <DependentUpon>transactions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\boutique\transactions.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\core\employees.Designer.vb">
+      <DependentUpon>employees.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\core\employees.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\core\header.Designer.vb">
+      <DependentUpon>header.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\core\header.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\core\categories.Designer.vb">
+      <DependentUpon>categories.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\core\categories.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\core\maintenance.Designer.vb">
+      <DependentUpon>maintenance.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\core\maintenance.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\core\message.Designer.vb">
+      <DependentUpon>message.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\core\message.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\core\modal.Designer.vb">
+      <DependentUpon>modal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\core\modal.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\core\positions.Designer.vb">
+      <DependentUpon>positions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\core\positions.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\museum\classifications.Designer.vb">
+      <DependentUpon>classifications.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\museum\classifications.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\museum\countries.Designer.vb">
+      <DependentUpon>countries.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\museum\countries.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\museum\dashboard.Designer.vb">
+      <DependentUpon>dashboard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\museum\dashboard.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\museum\donations.Designer.vb">
+      <DependentUpon>donations.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\museum\donations.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\core\equipment.Designer.vb">
+      <DependentUpon>equipment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\core\equipment.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\museum\events.Designer.vb">
+      <DependentUpon>events.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\museum\events.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\museum\guests.Designer.vb">
+      <DependentUpon>guests.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\museum\guests.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\museum\minerals.Designer.vb">
+      <DependentUpon>minerals.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\museum\minerals.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\museum\sections.Designer.vb">
+      <DependentUpon>sections.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\museum\sections.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\core\side_nav.Designer.vb">
+      <DependentUpon>side_nav.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\core\side_nav.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\core\users.Designer.vb">
+      <DependentUpon>users.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\core\users.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="main.Designer.vb">
+      <DependentUpon>main.vb</DependentUpon>
+    </Compile>
+    <Compile Include="main.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mim_museum_dataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>mim_museum_dataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="utils\ctrl_helpers.vb" />
+    <Compile Include="utils\db_controller.vb" />
+    <Compile Include="utils\helpers.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="components\auth\login.resx">
+      <DependentUpon>login.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\auth\new_pass.resx">
+      <DependentUpon>new_pass.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\auth\reset_pass.resx">
+      <DependentUpon>reset_pass.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\boutique\dashboard.resx">
+      <DependentUpon>dashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\boutique\pos.resx">
+      <DependentUpon>pos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\core\employees.resx">
+      <DependentUpon>employees.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\core\equipment.resx">
+      <DependentUpon>equipment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\core\header.resx">
+      <DependentUpon>header.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\core\modal.resx">
+      <DependentUpon>modal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\museum\dashboard.resx">
+      <DependentUpon>dashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\core\side_nav.resx">
+      <DependentUpon>side_nav.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\museum\minerals.resx">
+      <DependentUpon>minerals.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="main.resx">
+      <DependentUpon>main.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mim_museum_dataset.xsc">
+      <DependentUpon>mim_museum_dataset.xsd</DependentUpon>
+    </None>
+    <None Include="mim_museum_dataset.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>mim_museum_dataset.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="mim_museum_dataset.xss">
+      <DependentUpon>mim_museum_dataset.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets\pics\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>
