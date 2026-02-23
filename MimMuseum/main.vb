@@ -1,73 +1,40 @@
-﻿Partial Public Class main
+﻿Imports System.IO
+
+
+Partial Public Class main
     Inherits Form
+
     Private Sub main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.KeyPreview = True
-        Me.TabStop = False
-        Me.ActiveControl = Nothing
+        'if needed, adjust the size of components based on the screen resolution
+        fit_to_screen(Me)
 
-        AddHandler Me.KeyDown, AddressOf main_KeyDown
-        add_ctrl(Of login)(Me, "login")
-    End Sub
+        'get the parent directory since countries.json & schema.sql are in the same directory as the solution file
+        Dim parent_dir_path As String = Directory.GetParent(Application.StartupPath).Parent.Parent.FullName
+        Dim json_file_path As String = Path.Combine(parent_dir_path, "countries.json")
+        Dim schema_file_path As String = Path.Combine(parent_dir_path, "schema.sql")
 
-    Private Sub main_KeyDown(sender As Object, e As KeyEventArgs)
-        'upon clicking the left arrow key, if the active control is the reset pass user control,
-        'load the login control again
-        If e.KeyCode = Keys.Left And Me.ActiveControl.Name = "reset-pass" Then
-            remove_ctrl(Me, "reset-pass")
-            add_ctrl(Of login)(Me, "login")
+        'read and execute the database schema from `schema.sql`
+        exec_schema_file(schema_file_path)
+
+        If File.Exists(json_file_path) Then
+            load_countries_from_json(json_file_path)
         End If
 
-        'Dim db_obj As New db_controller()
+        Me.KeyPreview = True
+        'Me.TabStop = False                 // TODO: review if these are needed
+        'Me.ActiveControl = Nothing         // TODO: review if these are needed
 
-        'Dim row = db_obj.fetch_one(
-        '    "SELECT * FROM classifications WHERE class_id = @class_id",
-        '    New Dictionary(Of String, Object) From {
-        '        {"class_id", 6}
-        '    }
-        ')
-
-        'Dim rows = db.Fetch(
-        '    "
-        '    SELECT t.transaction_id, u.username, t.amount
-        '    FROM Transactions t
-        '    JOIN Users u ON u.id = t.user_id
-        '    WHERE u.username LIKE @search
-        '    ORDER BY t.transaction_id DESC
-        '    ",
-        '    New Dictionary(Of String, Object) From {
-        '        {"search", "%john%"}
-        '    }
-        '    )
-
-        'db.Execute(
-        '    "
-        '    INSERT INTO Users (username, age, email)
-        '    VALUES (@username, @age, @email)
-        '    ",
-        '    New Dictionary(Of String, Object) From {
-        '        {"username", "john"},
-        '        {"age", 22},
-        '        {"email", "john@example.com"}
-        '    }
-        ')
-
-        'Dim count = db.fetch_val(
-        '    "SELECT COUNT(*) FROM exhibits",
-        '    Nothing
-        '    )
+        AddHandler Me.KeyDown, AddressOf main_KeyDown
+        add_ctrl(Of login)(Me, ctrl_names.login)
+    End Sub
 
 
-        'db.execute(
-        '    "
-        '    INSERT INTO exhibits (title, category)
-        '    VALUES (@title, @category)
-        '    ",
-        '    New Dictionary(Of String, Object) From {
-        '        {"title", "New Exhibit"},
-        '        {"category", "Art"}
-        '    }
-        ')
-
+    Private Sub main_KeyDown(sender As Object, e As KeyEventArgs)
+        'upon clicking the left arrow key, if the active control is "reset pass", load the login control again
+        If e.KeyCode = Keys.Left And Me.ActiveControl.Name = ctrl_names.reset_pass Then
+            remove_ctrl(Me, ctrl_names.reset_pass)
+            add_ctrl(Of login)(Me, ctrl_names.login)
+        End If
     End Sub
 
 End Class

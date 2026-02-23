@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <configSections>
+    </configSections>
+    <connectionStrings>
+        <add name="solution-name.My.MySettings.connection-string-name" connectionString="connection-string-here"
+            providerName="System.Data.SqlClient" />
+    </connectionStrings>
+    <startup>
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.8" />
+    </startup>
+    <appSettings>
+        <add key="smtp_host" value="smtp.example.com"/>
+        <add key="smtp_port" value="587"/>
+        <add key="smtp_email" value="your-email@example.com"/>
+        <add key="smtp_password" value="your-password-here"/>
+    </appSettings>
+</configuration>

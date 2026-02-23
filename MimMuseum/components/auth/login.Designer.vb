@@ -23,7 +23,7 @@ Partial Class login
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(login))
-        Me.login_panel = New CuoreUI.Controls.cuiGradientPanel()
+        Me.login_panel = New CuoreUI.Controls.cuiPanelGradient()
         Me.show_pass_lbl = New System.Windows.Forms.Label()
         Me.toggle_pass_switch = New CuoreUI.Controls.cuiSwitch()
         Me.forgot_pass_link = New System.Windows.Forms.LinkLabel()
@@ -106,7 +106,7 @@ Partial Class login
         Me.login_lbl.BackColor = System.Drawing.Color.Transparent
         Me.login_lbl.Font = New System.Drawing.Font("Arial", 26.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.login_lbl.ForeColor = System.Drawing.Color.White
-        Me.login_lbl.Location = New System.Drawing.Point(190, 50)
+        Me.login_lbl.Location = New System.Drawing.Point(190, 55)
         Me.login_lbl.Name = "login_lbl"
         Me.login_lbl.Size = New System.Drawing.Size(130, 45)
         Me.login_lbl.TabIndex = 16
@@ -177,9 +177,9 @@ Partial Class login
         Me.login_btn.HoverImageTint = System.Drawing.Color.White
         Me.login_btn.HoverOutline = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.login_btn.Image = Nothing
-        Me.login_btn.ImageAutoCenter = True
+        'Me.login_btn.ImageAutoCenter = True
         Me.login_btn.ImageExpand = New System.Drawing.Point(0, 0)
-        Me.login_btn.ImageOffset = New System.Drawing.Point(0, 0)
+        'Me.login_btn.ImageOffset = New System.Drawing.Point(0, 0)
         Me.login_btn.Location = New System.Drawing.Point(64, 338)
         Me.login_btn.Name = "login_btn"
         Me.login_btn.NormalBackground = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(92, Byte), Integer), CType(CType(161, Byte), Integer))
@@ -195,7 +195,7 @@ Partial Class login
         Me.login_btn.Size = New System.Drawing.Size(328, 45)
         Me.login_btn.TabIndex = 15
         Me.login_btn.TextAlignment = System.Drawing.StringAlignment.Center
-        Me.login_btn.TextOffset = New System.Drawing.Point(0, 0)
+        'Me.login_btn.TextOffset = New System.Drawing.Point(0, 0)
         '
         'username_txtbox
         '
@@ -240,7 +240,7 @@ Partial Class login
 
     End Sub
 
-    Friend WithEvents login_panel As CuoreUI.Controls.cuiGradientPanel
+    Friend WithEvents login_panel As CuoreUI.Controls.cuiPanelGradient
     Friend WithEvents show_pass_lbl As Label
     Friend WithEvents toggle_pass_switch As CuoreUI.Controls.cuiSwitch
     Friend WithEvents forgot_pass_link As LinkLabel

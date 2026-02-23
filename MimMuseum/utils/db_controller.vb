@@ -3,13 +3,15 @@
 Public Class db_controller
     Private ReadOnly conn_str As String = "Data Source=localhost;Initial Catalog=mim_museum;Integrated Security=True"
 
+    ' no need for a function to close connections since we're using a context manager
 
+    ' return a new SqlConnection
     Private Function get_conn() As SqlConnection
         Return New SqlConnection(conn_str)
     End Function
 
 
-    ' Build SqlParameter list from a dictionary
+    ' build the SqlParameter list from a dictionary
     Private Function build_params(dict As Dictionary(Of String, Object)) As List(Of SqlParameter)
         Dim list As New List(Of SqlParameter)
 
@@ -26,16 +28,16 @@ Public Class db_controller
 
 
     Public Function fetch(
-                sql As String,
-                Optional params As Dictionary(Of String, Object) = Nothing
-                ) As List(Of Dictionary(Of String, Object))
+            sql As String,
+            Optional params As Dictionary(Of String, Object) = Nothing
+            ) As List(Of Dictionary(Of String, Object))
 
         Dim result As New List(Of Dictionary(Of String, Object))
 
-        Using con = get_conn()
-            Using cmd As New SqlCommand(sql, con)
+        Using conn = get_conn()
+            Using cmd As New SqlCommand(sql, conn)
                 cmd.Parameters.AddRange(build_params(params).ToArray())
-                con.Open()
+                conn.Open()
 
                 Using reader = cmd.ExecuteReader()
                     While reader.Read()
@@ -55,15 +57,15 @@ Public Class db_controller
     End Function
 
 
-    Public Function fetch_one(
-                sql As String,
-                Optional params As Dictionary(Of String, Object) = Nothing
-                ) As Dictionary(Of String, Object)
+    Public Function fetch_row(
+            sql As String,
+            Optional params As Dictionary(Of String, Object) = Nothing
+            ) As Dictionary(Of String, Object)
 
-        Using con = get_conn()
-            Using cmd As New SqlCommand(sql, con)
+        Using conn = get_conn()
+            Using cmd As New SqlCommand(sql, conn)
                 cmd.Parameters.AddRange(build_params(params).ToArray())
-                con.Open()
+                conn.Open()
 
                 Using reader = cmd.ExecuteReader()
                     If reader.Read() Then
@@ -82,31 +84,63 @@ Public Class db_controller
         Return Nothing
     End Function
 
-
+    ' fetch a value
     Public Function fetch_val(
-                sql As String,
-                Optional params As Dictionary(Of String, Object) = Nothing
-                ) As Object
+            sql As String,
+            Optional params As Dictionary(Of String, Object) = Nothing
+            ) As Object
 
-        Using con = get_conn()
-            Using cmd As New SqlCommand(sql, con)
-                cmd.Parameters.AddRange(build_params(params).ToArray())
-                con.Open()
-                Return cmd.ExecuteScalar()
+        Using conn = get_conn()
+            Using cmd As New SqlCommand(sql, conn)
+
+                If params IsNot Nothing Then
+                    cmd.Parameters.AddRange(build_params(params).ToArray())
+                End If
+
+                conn.Open()
+
+                Dim result = cmd.ExecuteScalar()
+
+                If result Is Nothing OrElse IsDBNull(result) Then
+                    Return 0
+                End If
+
+                Return result
             End Using
         End Using
     End Function
 
 
-    Public Function execute(
-                sql As String,
-                Optional params As Dictionary(Of String, Object) = Nothing
-                ) As Integer
+    ' fetch data as a DataTable
+    Public Function fetch_datatable(
+            sql As String,
+            Optional params As Dictionary(Of String, Object) = Nothing
+            ) As DataTable
 
-        Using con = get_conn()
-            Using cmd As New SqlCommand(sql, con)
+        Dim dt As New DataTable()
+
+        Using conn = get_conn()
+            Using cmd As New SqlCommand(sql, conn)
                 cmd.Parameters.AddRange(build_params(params).ToArray())
-                con.Open()
+                Using adapter As New SqlDataAdapter(cmd)
+                    adapter.Fill(dt)
+                End Using
+            End Using
+        End Using
+
+        Return dt
+    End Function
+
+
+    Public Function execute(
+            sql As String,
+            Optional params As Dictionary(Of String, Object) = Nothing
+            ) As Integer
+
+        Using conn = get_conn()
+            Using cmd As New SqlCommand(sql, conn)
+                cmd.Parameters.AddRange(build_params(params).ToArray())
+                conn.Open()
                 Return cmd.ExecuteNonQuery()
             End Using
         End Using

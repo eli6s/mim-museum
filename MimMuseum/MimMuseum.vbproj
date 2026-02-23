@@ -29,6 +29,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -65,12 +67,16 @@
   <PropertyGroup>
     <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
       <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net48\BCrypt.Net-Next.dll</HintPath>
     </Reference>
     <Reference Include="CuoreUI, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CuoreUI.Winforms.2025.10.18.1\lib\net472\CuoreUI.dll</HintPath>
+      <HintPath>..\packages\CuoreUI.Winforms.2026.1.16\lib\net472\CuoreUI.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
@@ -85,6 +91,12 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="OxyPlot, Version=2.2.0.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
+      <HintPath>..\packages\OxyPlot.Core.2.2.0\lib\net462\OxyPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.WindowsForms, Version=2.2.0.0, Culture=neutral, PublicKeyToken=245eacd6b5d2d338, processorArchitecture=MSIL">
+      <HintPath>..\packages\OxyPlot.WindowsForms.2.2.0\lib\net462\OxyPlot.WindowsForms.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="ReaLTaiizor, Version=3.8.1.3, Culture=neutral, processorArchitecture=MSIL">
@@ -94,6 +106,7 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Design" />
@@ -108,6 +121,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
@@ -115,6 +129,9 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="Vip.Notification, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Vip.Notification.1.0.4\lib\net45\Vip.Notification.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -161,28 +178,45 @@
     <Compile Include="components\boutique\dashboard.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="components\boutique\items.Designer.vb">
-      <DependentUpon>items.vb</DependentUpon>
+    <Compile Include="components\boutique\employees.Designer.vb">
+      <DependentUpon>employees.vb</DependentUpon>
     </Compile>
-    <Compile Include="components\boutique\items.vb">
+    <Compile Include="components\boutique\employees.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\boutique\equipment.Designer.vb">
+      <DependentUpon>equipment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\boutique\equipment.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\boutique\inventory.Designer.vb">
+      <DependentUpon>inventory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\boutique\inventory.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\boutique\maintenance.Designer.vb">
+      <DependentUpon>maintenance.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\boutique\maintenance.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="components\boutique\pos.Designer.vb">
       <DependentUpon>pos.vb</DependentUpon>
     </Compile>
-    <Compile Include="components\boutique\pos.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="components\boutique\pos.vb" />
     <Compile Include="components\boutique\transactions.Designer.vb">
       <DependentUpon>transactions.vb</DependentUpon>
     </Compile>
     <Compile Include="components\boutique\transactions.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="components\core\employees.Designer.vb">
+    <Compile Include="components\boutique\pos-utils\cart_item.vb" />
+    <Compile Include="components\museum\employees.Designer.vb">
       <DependentUpon>employees.vb</DependentUpon>
     </Compile>
-    <Compile Include="components\core\employees.vb">
+    <Compile Include="components\museum\employees.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="components\core\header.Designer.vb">
@@ -197,16 +231,10 @@
     <Compile Include="components\core\categories.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="components\core\maintenance.Designer.vb">
+    <Compile Include="components\museum\maintenance.Designer.vb">
       <DependentUpon>maintenance.vb</DependentUpon>
     </Compile>
-    <Compile Include="components\core\maintenance.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="components\core\message.Designer.vb">
-      <DependentUpon>message.vb</DependentUpon>
-    </Compile>
-    <Compile Include="components\core\message.vb">
+    <Compile Include="components\museum\maintenance.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="components\core\modal.Designer.vb">
@@ -219,6 +247,12 @@
       <DependentUpon>positions.vb</DependentUpon>
     </Compile>
     <Compile Include="components\core\positions.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\core\settings.Designer.vb">
+      <DependentUpon>settings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\core\settings.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="components\museum\classifications.Designer.vb">
@@ -245,10 +279,10 @@
     <Compile Include="components\museum\donations.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="components\core\equipment.Designer.vb">
+    <Compile Include="components\museum\equipment.Designer.vb">
       <DependentUpon>equipment.vb</DependentUpon>
     </Compile>
-    <Compile Include="components\core\equipment.vb">
+    <Compile Include="components\museum\equipment.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="components\museum\events.Designer.vb">
@@ -298,13 +332,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>mim_museum_dataset.xsd</DependentUpon>
     </Compile>
+    <Compile Include="mim_museum_dataset.vb">
+      <DependentUpon>mim_museum_dataset.xsd</DependentUpon>
+    </Compile>
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
+    <Compile Include="components\boutique\pos-utils\product_card.Designer.vb">
+      <DependentUpon>product_card.vb</DependentUpon>
+    </Compile>
+    <Compile Include="components\boutique\pos-utils\product_card.vb" />
+    <Compile Include="utils\badge_helpers.vb" />
+    <Compile Include="utils\config.vb" />
     <Compile Include="utils\ctrl_helpers.vb" />
     <Compile Include="utils\db_controller.vb" />
+    <Compile Include="utils\enums.vb" />
     <Compile Include="utils\helpers.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
@@ -317,6 +361,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="utils\image_helpers.vb" />
+    <Compile Include="utils\permission_manager.vb" />
+    <Compile Include="utils\session_manager.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="components\auth\login.resx">
@@ -331,13 +378,25 @@
     <EmbeddedResource Include="components\boutique\dashboard.resx">
       <DependentUpon>dashboard.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="components\boutique\employees.resx">
+      <DependentUpon>employees.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="components\boutique\pos.resx">
       <DependentUpon>pos.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="components\core\employees.resx">
+    <EmbeddedResource Include="components\museum\classifications.resx">
+      <DependentUpon>classifications.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\museum\employees.resx">
       <DependentUpon>employees.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="components\core\equipment.resx">
+    <EmbeddedResource Include="components\core\positions.resx">
+      <DependentUpon>positions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\core\settings.resx">
+      <DependentUpon>settings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\museum\equipment.resx">
       <DependentUpon>equipment.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="components\core\header.resx">
@@ -377,6 +436,7 @@
     <None Include="mim_museum_dataset.xss">
       <DependentUpon>mim_museum_dataset.xsd</DependentUpon>
     </None>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
@@ -407,4 +467,11 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="..\packages\Microsoft.NETFramework.ReferenceAssemblies.net48.1.0.2\build\Microsoft.NETFramework.ReferenceAssemblies.net48.targets" Condition="Exists('..\packages\Microsoft.NETFramework.ReferenceAssemblies.net48.1.0.2\build\Microsoft.NETFramework.ReferenceAssemblies.net48.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.NETFramework.ReferenceAssemblies.net48.1.0.2\build\Microsoft.NETFramework.ReferenceAssemblies.net48.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NETFramework.ReferenceAssemblies.net48.1.0.2\build\Microsoft.NETFramework.ReferenceAssemblies.net48.targets'))" />
+  </Target>
 </Project>

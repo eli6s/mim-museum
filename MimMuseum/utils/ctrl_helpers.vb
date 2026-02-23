@@ -1,10 +1,7 @@
 ﻿Module ctrl_helpers
 
-    'Public Sub clear_ctrls(parent As Control)
-    '    parent.Controls.Clear()
-    'End Sub
 
-    ' gets a user control by its name, or Nothing if not found
+    ' get a user control by its name, or Nothing if not found
     Public Function get_ctrl(parent As Control, name As String) As UserControl
         If parent.Controls.ContainsKey(name) Then
             Return parent.Controls(name)
@@ -13,14 +10,14 @@
     End Function
 
 
-    ' adds a user control to the specified form
+    ' add a user control to the specified form
     Public Function add_ctrl(Of T As {UserControl, New})(
-        parent As Control,
-        name As String,
-        Optional dock As DockStyle = DockStyle.None,
-        Optional location As Point? = Nothing,
-        Optional remove_existing As Boolean = True
-        ) As T
+            parent As Control,
+            name As String,
+            Optional dock As DockStyle = DockStyle.None,
+            Optional location As Point? = Nothing,
+            Optional remove_existing As Boolean = True
+            ) As T
 
         ' remove the old instance if it exists
         If remove_existing AndAlso parent.Controls.ContainsKey(name) Then
@@ -45,14 +42,24 @@
             ctrl.Location = location.Value
         End If
 
+        ' only scale if not at the max resolution
+        If (Not main.Size.Width = 2560 AndAlso Not main.Size.Height = 1440) Then
+            scale_step(ctrl, cratio_x, cratio_y)
+        End If
 
         parent.Controls.Add(ctrl)
+
+        Dim screen_width As Integer = Screen.PrimaryScreen.WorkingArea.Width
+        Dim screen_height As Integer = Screen.PrimaryScreen.WorkingArea.Height
+        Dim ratio_X As Single = CSng(screen_width) / max_width!
+        Dim ratio_Y As Single = CSng(screen_height) / max_height!
+
 
         Return ctrl
     End Function
 
 
-    ' removes a user control from the specified form
+    ' remove a user control from the specified form
     Public Sub remove_ctrl(parent As Control, name As String)
         If parent.Controls.ContainsKey(name) Then
             Dim c = parent.Controls(name)
@@ -60,6 +67,5 @@
             c.Dispose()
         End If
     End Sub
-
 
 End Module
