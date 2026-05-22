@@ -1,9 +1,7 @@
-﻿
-Public Class login
+﻿Public Class login
     Private ReadOnly db_obj As New db_controller()
 
-
-    'disable the login button when both the username & password fields are empty, enable it otherwise
+    ' disable the login button when both the username & password fields are empty, enable it otherwise
     Public Sub toggle_login_btn(login_form As login)
         If Not String.IsNullOrWhiteSpace(login_form.username_txtbox.Content) And
            Not String.IsNullOrWhiteSpace(login_form.pass_txtbox.Content) Then
@@ -40,18 +38,11 @@ Public Class login
     End Sub
 
 
-    'TODO
     Private Sub login_btn_Click(sender As Object, e As EventArgs) Handles login_btn.Click
-        ' ENUM TESTING
-        '' In dropdown
-        ''event_status_combo.DataSource = [Enum].GetValues(GetType(EventStatus))
-        ''event_status_combo.SelectedItem = EventStatus.Active
-
         Dim username = username_txtbox.Content.ToLower()
 
-        'validate input
         If String.IsNullOrEmpty(username) Or String.IsNullOrEmpty(pass_txtbox.Content) Then
-            Vip.Notification.Alert.ShowError("Please enter both username and password")
+            Vip.Notification.Alert.ShowError("Please enter both username and password.")
             Return
         End If
 
@@ -72,16 +63,15 @@ Public Class login
             }
         )
 
-        'user not found
         If user_data Is Nothing Then
-            Vip.Notification.Alert.ShowError("Invalid username or password")
+            Vip.Notification.Alert.ShowError("Invalid username or password.")
             Return
         End If
 
-        'validate password
         Dim pass_hash = user_data("password_hash").ToString()
+
         If Not valid_password(pass_txtbox.Content, pass_hash) Then
-            Vip.Notification.Alert.ShowError("Invalid username or password")
+            Vip.Notification.Alert.ShowError("Invalid username or password.")
             Return
         End If
 
@@ -98,15 +88,12 @@ Public Class login
 
         Dim employee_id = CInt(user_data("employee_id"))
         Dim position_title = user_data("position_title")
-        'convert the position title to an enum
+
+        ' convert the position title to an enum
         Dim position As UserPosition = [Enum].Parse(GetType(UserPosition), position_title, True)
 
+        ' populate the session with the user's info using the session manager
         session_manager.login(employee_id, username, position)
-
-        MsgBox(session_manager.employee_id)
-        MsgBox(session_manager.user_name)
-        MsgBox(session_manager.position)
-
 
         main.BackgroundImage = Nothing
         remove_ctrl(main, ctrl_names.login)
@@ -114,7 +101,6 @@ Public Class login
         main.header_pnl.Visible = True
         main.side_nav_pnl.Visible = True
         main.main_pnl.Visible = True
-        'main.pagination_pnl.Visible = True     // TODO: only make it visible in certain forms
 
         Dim header_ctrl = add_ctrl(Of header)(
             main.header_pnl,

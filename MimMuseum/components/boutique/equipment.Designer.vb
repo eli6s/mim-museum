@@ -22,8 +22,17 @@ Partial Class boutique_equipment
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container()
+        Me.SuspendLayout()
+        '
+        'boutique_equipment
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(166, Byte), Integer), CType(CType(209, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Name = "boutique_equipment"
+        Me.Size = New System.Drawing.Size(2318, 1291)
+        Me.ResumeLayout(False)
+
     End Sub
 
 End Class

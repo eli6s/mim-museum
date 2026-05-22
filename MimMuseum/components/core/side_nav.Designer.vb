@@ -59,7 +59,7 @@ Partial Class side_nav
         Me.btn_users = New CuoreUI.Controls.cuiButton()
         Me.btn_positions = New CuoreUI.Controls.cuiButton()
         Me.btn_categories = New CuoreUI.Controls.cuiButton()
-        Me.msg_dialog = New CuoreUI.Components.cuiMessageDialog()
+        Me.logout_confirmation = New CuoreUI.Components.cuiMessageDialog()
         Me.logo_panel.SuspendLayout()
         Me.museum_submenu.SuspendLayout()
         Me.boutique_submenu.SuspendLayout()
@@ -1311,19 +1311,19 @@ Partial Class side_nav
         Me.btn_categories.TextPadding = 35
         Me.btn_categories.TextSpacing = 2
         '
-        'msg_dialog
+        'logout_confirmation
         '
-        Me.msg_dialog.BackColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
-        Me.msg_dialog.ButtonSize = New System.Drawing.Size(80, 32)
-        Me.msg_dialog.CancelText = ""
-        Me.msg_dialog.DialogPadding = New System.Windows.Forms.Padding(20)
-        Me.msg_dialog.DialogSize = New System.Drawing.Size(400, 350)
-        Me.msg_dialog.DimColor = System.Drawing.Color.FromArgb(CType(CType(160, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.msg_dialog.ForeColor = System.Drawing.Color.FromArgb(CType(CType(12, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(84, Byte), Integer))
-        Me.msg_dialog.NoText = "No"
-        Me.msg_dialog.OKText = ""
-        Me.msg_dialog.Rounding = 8
-        Me.msg_dialog.YesText = "Yes"
+        Me.logout_confirmation.BackColor = System.Drawing.Color.White
+        Me.logout_confirmation.ButtonSize = New System.Drawing.Size(80, 32)
+        Me.logout_confirmation.CancelText = ""
+        Me.logout_confirmation.DialogPadding = New System.Windows.Forms.Padding(30)
+        Me.logout_confirmation.DialogSize = New System.Drawing.Size(430, 300)
+        Me.logout_confirmation.DimColor = System.Drawing.Color.FromArgb(CType(CType(160, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.logout_confirmation.ForeColor = System.Drawing.Color.FromArgb(CType(CType(12, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(84, Byte), Integer))
+        Me.logout_confirmation.NoText = "No"
+        Me.logout_confirmation.OKText = ""
+        Me.logout_confirmation.Rounding = 12
+        Me.logout_confirmation.YesText = "Yes"
         '
         'side_nav
         '
@@ -1378,5 +1378,5 @@ Partial Class side_nav
     Friend WithEvents btn_settings As CuoreUI.Controls.cuiButton
     Friend WithEvents btn_reports As CuoreUI.Controls.cuiButton
     Friend WithEvents MaterialDivider4 As ReaLTaiizor.Controls.MaterialDivider
-    Friend WithEvents msg_dialog As CuoreUI.Components.cuiMessageDialog
+    Friend WithEvents logout_confirmation As CuoreUI.Components.cuiMessageDialog
 End Class

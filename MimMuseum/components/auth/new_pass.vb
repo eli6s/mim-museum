@@ -17,11 +17,9 @@
             WHERE employee_id = @employee_id
             ",
             New Dictionary(Of String, Object) From {
-                {"employee_id", session_manager.reset_employee_id}
+                {"employee_id", session_manager.employee_id}
             }
         )
-
-        'Dim password_hash = user_info.Item("password_hash").ToString()
 
         ' compare the current password's hash to the new password
         ' if they match, it means the new password is the same as the current one
@@ -40,14 +38,20 @@
             WHERE employee_id = @employee_id
             ",
             New Dictionary(Of String, Object) From {
-                {"employee_id", session_manager.reset_employee_id},
+                {"employee_id", session_manager.employee_id},
                 {"new_hash", new_hash}
             }
         )
         Vip.Notification.Alert.ShowSucess("Your password has been changed successfully")
 
-        remove_ctrl(main, ctrl_names.new_pass)
-        add_ctrl(Of login)(main, ctrl_names.login)
+        ' only redirect to login if we're in the forgot-password flow (not from settings)
+        If main.Controls.OfType(Of new_pass)().Any() Then
+            remove_ctrl(main, ctrl_names.new_pass)
+            add_ctrl(Of login)(main, ctrl_names.login)
+        Else
+            ' settings flow — we're hosted in a modal wrapper, close it
+            Me.FindForm()?.Close()
+        End If
     End Sub
 
 End Class

@@ -1,91 +1,75 @@
-﻿'' =============================================================================
-'' product_card.vb  –  UserControl: one product tile in the POS grid
-''
-'' Designer requirements (product_card.Designer.vb):
-''   picItem   PictureBox  – SizeMode = Zoom, fills upper portion of card
-''   lblName   Label       – item name, centred, AutoSize = False, wraps
-''   lblPrice  Label       – formatted price, centred
-'' =============================================================================
-'Public Class product_card
+﻿Public Class product_card
 
-'    ' ------------------------------------------------------------------
-'    ' Event raised when the user clicks anywhere on the card
-'    ' ------------------------------------------------------------------
-'    Public Event ProductClicked(sender As product_card)
+    Public Event product_clicked(sender As product_card)
 
-'    ' ------------------------------------------------------------------
-'    ' Backing fields (read-only after SetProduct)
-'    ' ------------------------------------------------------------------
-'    Private _itemId As Integer
-'    Private _itemName As String
-'    Private _unitPrice As Decimal
-'    Private _stock As Integer
+    Private _item_id As Integer
+    Private _item_name As String
+    Private _unit_price As Decimal
+    Private _stock As Integer
 
-'    Public ReadOnly Property ItemId As Integer
-'        Get
-'            Return _itemId
-'        End Get
-'    End Property
+    Public ReadOnly Property item_id As Integer
+        Get
+            Return _item_id
+        End Get
+    End Property
 
-'    Public ReadOnly Property ItemName As String
-'        Get
-'            Return _itemName
-'        End Get
-'    End Property
+    Public ReadOnly Property item_name As String
+        Get
+            Return _item_name
+        End Get
+    End Property
 
-'    Public ReadOnly Property UnitPrice As Decimal
-'        Get
-'            Return _unitPrice
-'        End Get
-'    End Property
+    Public ReadOnly Property unit_price As Decimal
+        Get
+            Return _unit_price
+        End Get
+    End Property
 
-'    Public ReadOnly Property Stock As Integer
-'        Get
-'            Return _stock
-'        End Get
-'    End Property
+    Public ReadOnly Property stock As Integer
+        Get
+            Return _stock
+        End Get
+    End Property
 
-'    ' ------------------------------------------------------------------
-'    ' Populate card data — called by pos.vb after creating the card
-'    ' ------------------------------------------------------------------
-'    Public Sub SetProduct(id As Integer,
-'                          name As String,
-'                          price As Decimal,
-'                          stock As Integer,
-'                          imageFilename As String)
-'        _itemId = id
-'        _itemName = name
-'        _unitPrice = price
-'        _stock = stock
 
-'        lblName.Text = name
-'        lblPrice.Text = price.ToString("C2")
+    Public Sub set_product(
+                    id As Integer,
+                    name As String,
+                    price As Decimal,
+                    stk As Integer,
+                    image_filename As String
+                    )
+        _item_id = id
+        _item_name = name
+        _unit_price = price
+        _stock = stk
 
-'        Try
-'            If Not String.IsNullOrWhiteSpace(imageFilename) Then
-'                Dim fullPath As String = ImageHelper.GetItemImagePath(imageFilename)
-'                If IO.File.Exists(fullPath) Then
-'                    picItem.Image = Image.FromFile(fullPath)
-'                    Return
-'                End If
-'            End If
-'            picItem.Image = ImageHelper.GetPlaceholderImage()
-'        Catch
-'            picItem.Image = ImageHelper.GetPlaceholderImage()
-'        End Try
-'    End Sub
+        lblName.Text = name
+        lblPrice.Text = price.ToString("C2")
 
-'    ' ------------------------------------------------------------------
-'    ' Route all child clicks to the card-level event so there are
-'    ' no dead spots regardless of which visual element is clicked
-'    ' ------------------------------------------------------------------
-'    Private Sub RaiseCardClick(sender As Object, e As EventArgs) _
-'        Handles Me.Click,
-'                picItem.Click,
-'                lblName.Click,
-'                lblPrice.Click
+        Try
+            If Not String.IsNullOrWhiteSpace(image_filename) Then
+                Dim full_path As String = image_helpers.get_item_image_path(image_filename)
+                If Not String.IsNullOrEmpty(full_path) Then
+                    picItem.Image = Image.FromFile(full_path)
+                    Return
+                End If
+            End If
+            picItem.Image = image_helpers.get_placeholder_image()
+        Catch
+            picItem.Image = image_helpers.get_placeholder_image()
+        End Try
+    End Sub
 
-'        RaiseEvent ProductClicked(Me)
-'    End Sub
 
-'End Class
+    ' route all child clicks up to the card-level event — no dead zones
+    Private Sub raise_card_click(sender As Object, e As EventArgs) _
+        Handles Me.Click,
+                picItem.Click,
+                lblName.Click,
+                lblPrice.Click
+
+        RaiseEvent product_clicked(Me)
+    End Sub
+
+End Class

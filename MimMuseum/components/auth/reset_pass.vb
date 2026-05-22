@@ -25,7 +25,7 @@ Public Class reset_pass
             }
         )
 
-        'if no record was found of the user
+        ' if no record was found of the user
         If user_info Is Nothing Then
             Vip.Notification.Alert.ShowError("The email you entered is not registered in our database")
             Return
@@ -41,27 +41,13 @@ Public Class reset_pass
 
         Dim subject As String = "MIM Museum Password Reset"
         Dim content As String =
-$"
-Hi there,
-
-You, or someone who thinks they are you, have requested a password reset for {email}
-
-To reset your password, enter this verification code when prompted:
-{verification_code}
-
-If you did not make this request, you can ignore this email.
-
-Regards,
-MIM Museum
-https://www.mim.museum/
-"
-        'If email = "johndoe@gmail.com" Then
-        '    Vip.Notification.Alert.ShowSucess($"A reset password verification code has been sent to your email {verification_code}")
-        '    send_code_btn.Visible = False
-        '    email_txtbox.Visible = False
-        '    verif_code_box.Visible = True
-
-        'End If
+                    $"Hi there," & Environment.NewLine & Environment.NewLine &
+                    $"You, or someone who thinks they are you, have requested a password reset for {email}" & Environment.NewLine &  Environment.NewLine &
+                    $"To reset your password, enter this verification code when prompted:" & Environment.NewLine &
+                    $"{verification_code}" & Environment.NewLine & Environment.NewLine &
+                    $"If you did not make this request, you can ignore this email." & Environment.NewLine & Environment.NewLine &
+                    $"Regards," & Environment.NewLine & Environment.NewLine &
+                    $"MIM Museum"
 
         Dim status As Integer = send_email(email, subject, content)
 

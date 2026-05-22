@@ -1,6 +1,5 @@
 ﻿Module ctrl_helpers
 
-
     ' get a user control by its name, or Nothing if not found
     Public Function get_ctrl(parent As Control, name As String) As UserControl
         If parent.Controls.ContainsKey(name) Then
@@ -10,7 +9,17 @@
     End Function
 
 
-    ' add a user control to the specified form
+    ' add a user control to the specified parent
+    '
+    ' centering logic:
+    '   - if dock = Fill, centering is irrelevant — skip it
+    '   - if dock = None and no location given, center in parent
+    '   - if a location is given, use it as-is
+    '
+    ' scaling logic:
+    '   - scale the control first, then center
+    '   - this way the centering math uses the already-scaled size,
+    '     so the control lands in the correct position
     Public Function add_ctrl(Of T As {UserControl, New})(
             parent As Control,
             name As String,
@@ -25,41 +34,39 @@
         End If
 
         Dim ctrl As New T With {
-        .Name = name,
-        .Dock = dock
+            .Name = name,
+            .Dock = dock
         }
 
-        ' auto-size for proper centering
+        ' set natural size before scaling
         ctrl.Size = ctrl.PreferredSize
 
-        ' if no location is specified, place the user control in the center of the parent
-        If Not location.HasValue Then
-            ctrl.Location = New Point(
-            (parent.Width - ctrl.Width) \ 2,
-            (parent.Height - ctrl.Height) \ 2
-        )
-        Else
-            ctrl.Location = location.Value
-        End If
-
-        ' only scale if not at the max resolution
-        If (Not main.Size.Width = 2560 AndAlso Not main.Size.Height = 1440) Then
+        ' scale first — centering must happen after so it uses the scaled size
+        Dim needs_scaling = (main.Width <> max_width OrElse main.Height <> max_height)
+        If needs_scaling AndAlso cratio_x > 0 AndAlso cratio_y > 0 Then
             scale_step(ctrl, cratio_x, cratio_y)
         End If
 
+        ' position; only meaningful when not docked
+        If dock = DockStyle.None Then
+            If location.HasValue Then
+                ctrl.Location = location.Value
+            Else
+                ' center in parent using the (now scaled) size
+                ctrl.Location = New Point(
+                    (parent.Width - ctrl.Width) \ 2,
+                    (parent.Height - ctrl.Height) \ 2
+                )
+            End If
+        End If
+
         parent.Controls.Add(ctrl)
-
-        Dim screen_width As Integer = Screen.PrimaryScreen.WorkingArea.Width
-        Dim screen_height As Integer = Screen.PrimaryScreen.WorkingArea.Height
-        Dim ratio_X As Single = CSng(screen_width) / max_width!
-        Dim ratio_Y As Single = CSng(screen_height) / max_height!
-
 
         Return ctrl
     End Function
 
 
-    ' remove a user control from the specified form
+    ' remove a user control from the specified parent
     Public Sub remove_ctrl(parent As Control, name As String)
         If parent.Controls.ContainsKey(name) Then
             Dim c = parent.Controls(name)

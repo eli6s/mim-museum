@@ -39,7 +39,7 @@ Partial Class new_pass
         Me.new_pass_panel.Controls.Add(Me.confirm_pass_txtbox)
         Me.new_pass_panel.Controls.Add(Me.set_pass_btn)
         Me.new_pass_panel.GradientAngle = 50.0!
-        Me.new_pass_panel.Location = New System.Drawing.Point(32, 20)
+        Me.new_pass_panel.Location = New System.Drawing.Point(13, 17)
         Me.new_pass_panel.Name = "new_pass_panel"
         Me.new_pass_panel.OutlineThickness = 5.0!
         Me.new_pass_panel.PanelColor1 = System.Drawing.Color.FromArgb(CType(CType(12, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(84, Byte), Integer))
@@ -139,9 +139,7 @@ Partial Class new_pass
         Me.set_pass_btn.HoverImageTint = System.Drawing.Color.White
         Me.set_pass_btn.HoverOutline = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.set_pass_btn.Image = Nothing
-        'Me.set_pass_btn.ImageAutoCenter = True
         Me.set_pass_btn.ImageExpand = New System.Drawing.Point(0, 0)
-        'Me.set_pass_btn.ImageOffset = New System.Drawing.Point(0, 0)
         Me.set_pass_btn.Location = New System.Drawing.Point(64, 293)
         Me.set_pass_btn.Name = "set_pass_btn"
         Me.set_pass_btn.NormalBackground = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(92, Byte), Integer), CType(CType(161, Byte), Integer))
@@ -149,6 +147,7 @@ Partial Class new_pass
         Me.set_pass_btn.NormalImageTint = System.Drawing.Color.White
         Me.set_pass_btn.NormalOutline = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(92, Byte), Integer), CType(CType(161, Byte), Integer))
         Me.set_pass_btn.OutlineThickness = 1.0!
+        Me.set_pass_btn.Padding = New System.Windows.Forms.Padding(12)
         Me.set_pass_btn.PressedBackground = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(92, Byte), Integer), CType(CType(161, Byte), Integer))
         Me.set_pass_btn.PressedForeColor = System.Drawing.Color.White
         Me.set_pass_btn.PressedImageTint = System.Drawing.Color.White
@@ -157,7 +156,8 @@ Partial Class new_pass
         Me.set_pass_btn.Size = New System.Drawing.Size(328, 45)
         Me.set_pass_btn.TabIndex = 15
         Me.set_pass_btn.TextAlignment = System.Drawing.StringAlignment.Center
-        'Me.set_pass_btn.TextOffset = New System.Drawing.Point(0, 0)
+        Me.set_pass_btn.TextPadding = 12
+        Me.set_pass_btn.TextSpacing = 2
         '
         'new_pass
         '
@@ -166,7 +166,7 @@ Partial Class new_pass
         Me.BackColor = System.Drawing.Color.Transparent
         Me.Controls.Add(Me.new_pass_panel)
         Me.Name = "new_pass"
-        Me.Size = New System.Drawing.Size(528, 471)
+        Me.Size = New System.Drawing.Size(480, 442)
         Me.new_pass_panel.ResumeLayout(False)
         Me.ResumeLayout(False)
 

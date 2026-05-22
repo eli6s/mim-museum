@@ -22,15 +22,12 @@ Partial Class header
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(header))
         Me.header_core_pnl = New CuoreUI.Controls.cuiPanelGradient()
         Me.clock = New ReaLTaiizor.Controls.ParrotClock()
         Me.breadcrumb_btn = New CuoreUI.Controls.cuiButton()
         Me.position_lbl = New System.Windows.Forms.Label()
         Me.session_username_lbl = New System.Windows.Forms.Label()
-        Me.session_pfp = New System.Windows.Forms.PictureBox()
         Me.header_core_pnl.SuspendLayout()
-        CType(Me.session_pfp, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'header_core_pnl
@@ -40,7 +37,6 @@ Partial Class header
         Me.header_core_pnl.Controls.Add(Me.breadcrumb_btn)
         Me.header_core_pnl.Controls.Add(Me.position_lbl)
         Me.header_core_pnl.Controls.Add(Me.session_username_lbl)
-        Me.header_core_pnl.Controls.Add(Me.session_pfp)
         Me.header_core_pnl.GradientAngle = 0!
         Me.header_core_pnl.Location = New System.Drawing.Point(-12, 0)
         Me.header_core_pnl.Name = "header_core_pnl"
@@ -105,7 +101,7 @@ Partial Class header
         Me.breadcrumb_btn.HoverOutline = System.Drawing.Color.Transparent
         Me.breadcrumb_btn.Image = Nothing
         Me.breadcrumb_btn.ImageExpand = New System.Drawing.Point(3, 3)
-        Me.breadcrumb_btn.Location = New System.Drawing.Point(199, 41)
+        Me.breadcrumb_btn.Location = New System.Drawing.Point(159, 41)
         Me.breadcrumb_btn.Name = "breadcrumb_btn"
         Me.breadcrumb_btn.NormalBackground = System.Drawing.Color.Transparent
         Me.breadcrumb_btn.NormalForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
@@ -147,17 +143,6 @@ Partial Class header
         Me.session_username_lbl.TabIndex = 17
         Me.session_username_lbl.Text = "session username"
         '
-        'session_pfp
-        '
-        Me.session_pfp.BackgroundImage = CType(resources.GetObject("session_pfp.BackgroundImage"), System.Drawing.Image)
-        Me.session_pfp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.session_pfp.Location = New System.Drawing.Point(1960, 35)
-        Me.session_pfp.Name = "session_pfp"
-        Me.session_pfp.Size = New System.Drawing.Size(71, 64)
-        Me.session_pfp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.session_pfp.TabIndex = 1
-        Me.session_pfp.TabStop = False
-        '
         'header
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -167,13 +152,11 @@ Partial Class header
         Me.Name = "header"
         Me.Size = New System.Drawing.Size(2332, 149)
         Me.header_core_pnl.ResumeLayout(False)
-        CType(Me.session_pfp, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents header_core_pnl As CuoreUI.Controls.cuiPanelGradient
-    Friend WithEvents session_pfp As PictureBox
     Friend WithEvents session_username_lbl As Label
     Friend WithEvents position_lbl As Label
     Friend WithEvents breadcrumb_btn As CuoreUI.Controls.cuiButton

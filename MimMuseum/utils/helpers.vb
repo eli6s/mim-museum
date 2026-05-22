@@ -16,11 +16,9 @@ Imports OxyPlot
 Imports OxyPlot.Series
 Imports OxyPlot.WindowsForms
 
-
 Module helpers
     Private ReadOnly db_obj As New db_controller()
 
-    '2880x1800 at 150%
     Public cratio_x As Single
     Public cratio_y As Single
 
@@ -28,8 +26,7 @@ Module helpers
     Public ReadOnly max_height As Integer = 1440
 
 
-    'TODO: fix the location of the title
-    'generate a (pie chart) populated with data from the given query
+    ' generate a pie chart populated with data from the given query
     Public Sub gen_piechart(parent As Control, title As String, query As String)
         Dim plot_view As New PlotView()
         plot_view.Dock = DockStyle.Fill
@@ -37,10 +34,13 @@ Module helpers
         plot_view.BackColor = parent.BackColor
 
         Dim model As New PlotModel With {
-            .title = title,
-            .TitleColor = OxyColors.White,
+            .Title = title,
+            .TitleColor = OxyColor.FromRgb(12, 37, 84),
             .TitleFontSize = 26,
             .TitleFontWeight = FontWeights.Bold,
+            .TitlePadding = 70,
+            .PlotMargins = New OxyThickness(0, -10, 0, 0),  'negative top margin pulls chart back up
+            .Padding = New OxyThickness(60, 20, 60, 40),
             .Background = OxyColor.FromRgb(parent.BackColor.R, parent.BackColor.G, parent.BackColor.B),
             .PlotAreaBorderThickness = New OxyThickness(0),
             .TextColor = OxyColor.FromRgb(12, 37, 84)
@@ -54,7 +54,7 @@ Module helpers
             .InsideLabelFormat = "{2:0}%",
             .AngleSpan = 360,
             .StartAngle = 0,
-            .FontSize = 13,
+            .FontSize = 14,
             .FontWeight = FontWeights.Bold,
             .TextColor = OxyColor.FromRgb(12, 37, 84)
         }
@@ -80,7 +80,6 @@ Module helpers
     End Sub
 
 
-    'TODO: dissect this later to understand how things operate under the hood
     Public Sub fit_to_screen(f As Form)
         Dim screen_width As Integer = Screen.PrimaryScreen.WorkingArea.Width
         Dim screen_height As Integer = Screen.PrimaryScreen.WorkingArea.Height
@@ -97,7 +96,6 @@ Module helpers
     End Sub
 
 
-    'TODO: dissect this later to understand how things operate under the hood
     Public Sub scale_step(parent As Control, rX As Single, rY As Single)
         For Each c As Control In parent.Controls
             c.Left = CInt(c.Left * rX)
@@ -115,7 +113,59 @@ Module helpers
     End Sub
 
 
-    'add a column to a MetroGrid
+    ' populate a cuiComboBox from a db query and build the display → id map
+    Public Sub load_combo(
+                    input_cmb As CuoreUI.Controls.cuiComboBox,
+                    map As Dictionary(Of String, Integer),
+                    sql As String,
+                    id_col As String,
+                    name_col As String
+                    )
+
+        map.Clear()
+        input_cmb.Items = New String() {}
+
+        For Each row In db_obj.fetch(sql)
+            Dim display_text = row(name_col).ToString()
+            Dim id_val = Convert.ToInt32(row(id_col))
+            map(display_text) = id_val
+            input_cmb.AddItem(display_text)
+        Next
+
+        'prevent auto-selection of first item
+        input_cmb.SelectedIndex = -1
+    End Sub
+
+
+    ' get the mapped integer ID for the currently selected item in a cuiComboBox
+    ' returns 0 if nothing is selected or the key isn't in the map
+    Public Function get_combo_id(
+                        cmb As CuoreUI.Controls.cuiComboBox,
+                        map As Dictionary(Of String, Integer)
+                        ) As Integer
+        If cmb.SelectedItem Is Nothing Then Return 0
+        Dim key = cmb.SelectedItem.ToString()
+        Return If(map.ContainsKey(key), map(key), 0)
+    End Function
+
+
+    ' select a cuiComboBox item by its display text
+    ' iterates Items array directly since cuiComboBox doesn't support IndexOf
+    Public Sub select_combo(
+                    cmb As CuoreUI.Controls.cuiComboBox,
+                    display_val As String
+                    )
+        If String.IsNullOrEmpty(display_val) Then Return
+        For i As Integer = 0 To cmb.Items.Length - 1
+            If cmb.Items(i) = display_val Then
+                cmb.SelectedIndex = i
+                Return
+            End If
+        Next
+    End Sub
+
+
+    ' add a column to a MetroGrid
     Public Sub add_column(
             grid As MetroGrid,
             name As String,
@@ -136,7 +186,7 @@ Module helpers
     End Sub
 
 
-    'populate a MetroGrid with row numbers
+    ' populate a MetroGrid with row numbers
     Public Sub populate_row_numbers(grid As MetroGrid)
         For i As Integer = 0 To grid.Rows.Count - 1
             If Not grid.Rows(i).IsNewRow Then
@@ -146,7 +196,7 @@ Module helpers
     End Sub
 
 
-    'recursively register click handlers for all buttons in a control hierarchy
+    ' recursively register click handlers for all buttons in a control hierarchy
     Public Sub register_click_handlers(parent As Control, handler As EventHandler)
         For Each ctrl As Control In parent.Controls
             If TypeOf ctrl Is cuiButton Then
@@ -161,7 +211,7 @@ Module helpers
     End Sub
 
 
-    'convert a string to pascal case
+    ' convert a string to pascal case
     Public Function to_pascal_case(snake_case As String) As String
         Dim parts() As String = snake_case.Split("_"c)
         Dim result As String = ""
@@ -174,7 +224,7 @@ Module helpers
     End Function
 
 
-    'read and execute the sql schema of an sql file
+    ' read and execute the sql schema of an sql file
     Public Sub exec_schema_file(path As String)
         Try
             Dim sql_script As String = File.ReadAllText(path, Encoding.UTF8)
@@ -186,7 +236,7 @@ Module helpers
     End Sub
 
 
-    'load the countries from a JSON file and populate the database with any missing ones
+    ' load the countries from a JSON file and populate the database with any missing ones
     Public Sub load_countries_from_json(file_path As String)
         Try
             Dim json_str As String = File.ReadAllText(file_path)
@@ -213,7 +263,7 @@ Module helpers
     End Sub
 
 
-    'check if the given country exists in the database
+    ' check if the given country exists in the database
     Public Function country_exists(country_name As String) As Boolean
         Dim count = db_obj.fetch_val(
             "
@@ -265,17 +315,16 @@ Module helpers
 
     Public Sub set_delta_color(lbl As Label, value As Decimal)
         If value > 0 Then
-            lbl.ForeColor = Color.FromArgb(98, 252, 170)       ' green
+            lbl.ForeColor = Color.FromArgb(98, 252, 170)    'green
         ElseIf value < 0 Then
-            lbl.ForeColor = Color.FromArgb(255, 128, 128)   ' red
+            lbl.ForeColor = Color.FromArgb(255, 128, 128)   'red
         Else
-            lbl.ForeColor = Color.FromArgb(187, 225, 252)   ' neutral
+            lbl.ForeColor = Color.FromArgb(187, 225, 252)   'neutral
         End If
     End Sub
 
 
-    'TODO: utilise this
-    'generate a username for an employee
+    ' generate a username for an employee
     Public Function generate_username(
                         first_name As String,
                         last_name As String,
@@ -295,47 +344,50 @@ Module helpers
     End Function
 
 
-    'TODO: MAYBE utilise this
-    'check if a username's format matches the regex validation pattern
+    ' check if a username's format matches the regex validation pattern
     Public Function valid_username(username As String) As Boolean
-        'TODO
-        'Dim username = GenerateUsername(firstName, lastName, employeeId)
-
-        '    If Not ValidateUsernameLength(username) Then
-        '        Throw New ArgumentException(
-        '            $"Generated username '{username}' exceeds 30 characters. " &
-        '            "Please use a shorter last name or contact system administrator.")
-        '    End If
-
-        Return Regex.IsMatch(username, "^\+?\d{1,4}([ -]?\d+)*$")
+        If username.Trim().Length > 30 Then Return False
+        Return Regex.IsMatch(username.Trim(), "^[a-z][a-z]+-\d+$")
     End Function
 
 
-    'generate a hash for a password
+    ' generate a random plaintext password to be hashed and emailed to the user
+    Public Function generate_plain_password() As String
+        Const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%"
+        Dim rng = New Random()
+        Dim result = New System.Text.StringBuilder()
+        For i = 1 To 12
+            result.Append(chars(rng.Next(chars.Length)))
+        Next
+        Return result.ToString()
+    End Function
+
+
+    ' generate a hash for a password
     Public Function generate_password_hash(pass As String) As String
         Return BCrypt.Net.BCrypt.EnhancedHashPassword(pass)
     End Function
 
 
-    'check if a password matches the specified hash
+    ' check if a password matches the specified hash
     Public Function valid_password(pass As String, pass_hash As String) As Boolean
         Return BCrypt.Net.BCrypt.EnhancedVerify(pass, pass_hash)
     End Function
 
 
-    'check if a phone number's format matches the regex validation pattern
+    ' check if a phone number's format matches the regex validation pattern
     Public Function valid_phone_num(phone_num As String) As Boolean
         Return Regex.IsMatch(phone_num, "^\+?\d{1,4}([ -]?\d+)*$")
     End Function
 
 
-    'check if an email's format matches the regex validation pattern
+    ' check if an email's format matches the regex validation pattern
     Public Function valid_email(email As String) As Boolean
         Return Regex.IsMatch(email, "^[_a-z0-9-]+(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")
     End Function
 
 
-    'check if the dimensions's format matches the regex validation pattern
+    ' check if the dimensions's format matches the regex validation pattern
     Public Function valid_dimensions(dimensions As String) As Boolean
         Return Regex.IsMatch(dimensions, "^\d.*\sx\s\d.*\sx\s\d.*\scm$")
     End Function

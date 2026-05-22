@@ -1,4 +1,9 @@
 ﻿Module enums
+    Public Enum FormMode As Integer
+        Add = 0
+        Edit = 1
+    End Enum
+
     Public Enum EventStatus As Integer
         Upcoming = 0
         Ongoing = 1
@@ -15,7 +20,7 @@
 
 
     Public Enum ServiceType As Integer
-        Local = 1
+        Internal = 1
         External = 2
     End Enum
 

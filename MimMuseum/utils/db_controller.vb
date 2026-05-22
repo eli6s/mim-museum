@@ -1,9 +1,10 @@
 ﻿Imports System.Data.SqlClient
 
+' no need for a function to close connections since
+' the context manager automatically handles it for us
+
 Public Class db_controller
     Private ReadOnly conn_str As String = "Data Source=localhost;Initial Catalog=mim_museum;Integrated Security=True"
-
-    ' no need for a function to close connections since we're using a context manager
 
     ' return a new SqlConnection
     Private Function get_conn() As SqlConnection
@@ -84,7 +85,7 @@ Public Class db_controller
         Return Nothing
     End Function
 
-    ' fetch a value
+
     Public Function fetch_val(
             sql As String,
             Optional params As Dictionary(Of String, Object) = Nothing
@@ -111,7 +112,6 @@ Public Class db_controller
     End Function
 
 
-    ' fetch data as a DataTable
     Public Function fetch_datatable(
             sql As String,
             Optional params As Dictionary(Of String, Object) = Nothing

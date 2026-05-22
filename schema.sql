@@ -40,7 +40,7 @@ BEGIN
         class_id        INT NOT NULL,
         country_id      INT NOT NULL,
         section_id      INT NOT NULL,
-        dimensions      VARCHAR(20) NOT NULL,
+        dimensions      VARCHAR(30) NOT NULL,
         hardness_lvl    INT NOT NULL CHECK (hardness_lvl BETWEEN 1 AND 10),
         mineral_desc    VARCHAR(500) NOT NULL,
         is_fluorescent  BIT NOT NULL DEFAULT 0,
@@ -106,7 +106,6 @@ BEGIN
     CREATE TABLE users (
         username        VARCHAR(30) UNIQUE NOT NULL,
         password_hash   VARCHAR(100) NOT NULL,
-        image_filename  VARCHAR(100) NULL,
         created_at      DATETIME2 NOT NULL DEFAULT SYSDATETIME() CHECK (created_at <= SYSDATETIME()),
         last_login      DATETIME2 NULL CHECK (last_login <= SYSDATETIME()), -- the user might've never logged in yet
         employee_id     INT NOT NULL,
@@ -353,7 +352,7 @@ IF OBJECT_ID('dbo.items_categories', 'U') IS NULL
 BEGIN
     CREATE TABLE items_categories (
         category_id     INT IDENTITY(901, 1) NOT NULL,
-        category_name   VARCHAR(60) NOT NULL,
+        category_name   VARCHAR(60) UNIQUE NOT NULL,
 
         PRIMARY KEY (category_id)
         );
@@ -389,6 +388,7 @@ BEGIN
         service_type    VARCHAR(20) NOT NULL DEFAULT 'external',
         servicer        VARCHAR(50) NULL,       -- NULL = internal
         employee_id     INT NULL,               -- NOT NULL = internal
+        building        VARCHAR(20) NOT NULL,
         notes           VARCHAR(100) NOT NULL,  --`equipment calibration`, `hvac system inspection`, `sensor battery replacement`, etc
         start_date      DATE NOT NULL,
         end_date        DATE NOT NULL,
@@ -415,7 +415,7 @@ BEGIN
     CREATE TABLE equipment_maintenance (
         service_id  INT NOT NULL,
         item_id     INT NOT NULL,
-        cost        DECIMAL(7, 2) NOT NULL CHECK (cost > 0),
+        cost        DECIMAL(7, 2) NOT NULL CHECK (cost >= 0),  -- 0 is allowed for labour-only services (e.g. firmware updates, no parts needed)
 
         PRIMARY KEY (service_id, item_id),
         FOREIGN KEY (service_id)

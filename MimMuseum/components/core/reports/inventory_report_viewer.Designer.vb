@@ -1,8 +1,8 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class modal
-    Inherits System.Windows.Forms.UserControl
+Partial Class inventory_report_viewer
+    Inherits System.Windows.Forms.Form
 
-    'UserControl overrides dispose to clean up the component list.
+    'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
@@ -22,15 +22,30 @@ Partial Class modal
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.SuspendLayout()
         '
-        'modal
+        'ReportViewer1
+        '
+        Me.ReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "MimMuseum.receipt.rdlc"
+        Me.ReportViewer1.Location = New System.Drawing.Point(0, 0)
+        Me.ReportViewer1.Name = "ReportViewer1"
+        Me.ReportViewer1.ServerReport.BearerToken = Nothing
+        Me.ReportViewer1.Size = New System.Drawing.Size(1070, 871)
+        Me.ReportViewer1.TabIndex = 1
+        '
+        'inventory_report_viewer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Name = "modal"
+        Me.ClientSize = New System.Drawing.Size(1070, 871)
+        Me.Controls.Add(Me.ReportViewer1)
+        Me.Name = "inventory_report_viewer"
+        Me.Text = "inventory_report_viewer"
         Me.ResumeLayout(False)
 
     End Sub
 
+    Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
 End Class

@@ -117,4 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="delete_confirmation.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>10, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="date_input.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAMZJREFUSEvt
+        lUEKgzAQRdM79GpewEKPVqQLF90XepYuXHuD+H+Y1KYZjY1IEHzw0ZnPnwEDxhTDWnulpIxI+UkQflFS
+        RqR8FQQqqJFw7wfgeYYe0vfSfGYr9iJg1BB5Q37AU7ylC5glNfsBaLZQB52kdoOcqaD5zEKc0Upr5DeA
+        96xD5gxKypFJ40+KL3AHt1Kfww/4NldqdsHmn+hYcCxIU3RB8DfNgVmZof5NLxDx90GOpu8DAoM32h3S
+        wkt0g/QbbacYMwAXS6cRGXz0uQAAAABJRU5ErkJggg==
+</value>
+  </data>
 </root>

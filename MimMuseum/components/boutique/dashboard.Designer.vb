@@ -31,31 +31,31 @@ Partial Class boutique_dashboard
         Me.top_customers_grid = New MetroFramework.Controls.MetroGrid()
         Me.CuiLabel5 = New CuoreUI.Controls.cuiLabel()
         Me.CuiPanelGradient2 = New CuoreUI.Controls.cuiPanelGradient()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
+        Me.lbl_listings_delta = New System.Windows.Forms.Label()
+        Me.lbl_listings_sub = New System.Windows.Forms.Label()
         Me.MaterialDivider4 = New ReaLTaiizor.Controls.MaterialDivider()
-        Me.active_listings_lbl = New System.Windows.Forms.Label()
+        Me.lbl_listings_value = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.CuiPanelGradient1 = New CuoreUI.Controls.cuiPanelGradient()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
+        Me.lbl_customers_delta = New System.Windows.Forms.Label()
+        Me.lbl_customers_sub = New System.Windows.Forms.Label()
         Me.MaterialDivider3 = New ReaLTaiizor.Controls.MaterialDivider()
-        Me.reg_customers_lbl = New System.Windows.Forms.Label()
+        Me.lbl_customers_value = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.CuiGradientPanel1 = New CuoreUI.Controls.cuiPanelGradient()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.lbl_orders_delta = New System.Windows.Forms.Label()
+        Me.lbl_orders_sub = New System.Windows.Forms.Label()
         Me.MaterialDivider1 = New ReaLTaiizor.Controls.MaterialDivider()
-        Me.total_orders_lbl = New System.Windows.Forms.Label()
+        Me.lbl_orders_value = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.CuiGradientPanel2 = New CuoreUI.Controls.cuiPanelGradient()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lbl_revenue_delta = New System.Windows.Forms.Label()
+        Me.lbl_revenue_sub = New System.Windows.Forms.Label()
         Me.MaterialDivider2 = New ReaLTaiizor.Controls.MaterialDivider()
-        Me.total_revenue_lbl = New System.Windows.Forms.Label()
+        Me.lbl_revenue_value = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         CType(Me.top_customers_grid, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -71,13 +71,13 @@ Partial Class boutique_dashboard
         '
         'section_piechart_pnl
         '
-        Me.section_piechart_pnl.Location = New System.Drawing.Point(1234, 568)
+        Me.section_piechart_pnl.Location = New System.Drawing.Point(1105, 473)
         Me.section_piechart_pnl.Name = "section_piechart_pnl"
         Me.section_piechart_pnl.OutlineThickness = 1.0!
         Me.section_piechart_pnl.PanelColor = System.Drawing.Color.FromArgb(CType(CType(166, Byte), Integer), CType(CType(209, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.section_piechart_pnl.PanelOutlineColor = System.Drawing.Color.Transparent
         Me.section_piechart_pnl.Rounding = New System.Windows.Forms.Padding(8)
-        Me.section_piechart_pnl.Size = New System.Drawing.Size(1038, 565)
+        Me.section_piechart_pnl.Size = New System.Drawing.Size(1167, 660)
         Me.section_piechart_pnl.TabIndex = 32
         '
         'top_customers_grid
@@ -146,7 +146,7 @@ Partial Class boutique_dashboard
         'CuiLabel5
         '
         Me.CuiLabel5.BackColor = System.Drawing.Color.Transparent
-        Me.CuiLabel5.Content = "All-Time\ Top\ Customers"
+        Me.CuiLabel5.Content = "Top\ 7\ Customers"
         Me.CuiLabel5.Font = New System.Drawing.Font("Helvetica", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CuiLabel5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(12, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(84, Byte), Integer))
         Me.CuiLabel5.HorizontalAlignment = System.Drawing.StringAlignment.Center
@@ -159,10 +159,10 @@ Partial Class boutique_dashboard
         'CuiPanelGradient2
         '
         Me.CuiPanelGradient2.BackColor = System.Drawing.Color.Transparent
-        Me.CuiPanelGradient2.Controls.Add(Me.Label8)
-        Me.CuiPanelGradient2.Controls.Add(Me.Label9)
+        Me.CuiPanelGradient2.Controls.Add(Me.lbl_listings_delta)
+        Me.CuiPanelGradient2.Controls.Add(Me.lbl_listings_sub)
         Me.CuiPanelGradient2.Controls.Add(Me.MaterialDivider4)
-        Me.CuiPanelGradient2.Controls.Add(Me.active_listings_lbl)
+        Me.CuiPanelGradient2.Controls.Add(Me.lbl_listings_value)
         Me.CuiPanelGradient2.Controls.Add(Me.Label16)
         Me.CuiPanelGradient2.Controls.Add(Me.PictureBox4)
         Me.CuiPanelGradient2.GradientAngle = 0!
@@ -177,26 +177,26 @@ Partial Class boutique_dashboard
         Me.CuiPanelGradient2.Size = New System.Drawing.Size(471, 344)
         Me.CuiPanelGradient2.TabIndex = 93
         '
-        'Label8
+        'lbl_listings_delta
         '
-        Me.Label8.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
-        Me.Label8.Location = New System.Drawing.Point(43, 302)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(202, 19)
-        Me.Label8.TabIndex = 33
-        Me.Label8.Text = "−3 this week"
+        Me.lbl_listings_delta.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_listings_delta.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
+        Me.lbl_listings_delta.Location = New System.Drawing.Point(43, 302)
+        Me.lbl_listings_delta.Name = "lbl_listings_delta"
+        Me.lbl_listings_delta.Size = New System.Drawing.Size(408, 19)
+        Me.lbl_listings_delta.TabIndex = 33
+        Me.lbl_listings_delta.Text = "N/A"
         '
-        'Label9
+        'lbl_listings_sub
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
-        Me.Label9.Location = New System.Drawing.Point(43, 222)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(170, 19)
-        Me.Label9.TabIndex = 32
-        Me.Label9.Text = "items currently in stock"
+        Me.lbl_listings_sub.AutoSize = True
+        Me.lbl_listings_sub.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_listings_sub.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
+        Me.lbl_listings_sub.Location = New System.Drawing.Point(43, 222)
+        Me.lbl_listings_sub.Name = "lbl_listings_sub"
+        Me.lbl_listings_sub.Size = New System.Drawing.Size(36, 19)
+        Me.lbl_listings_sub.TabIndex = 32
+        Me.lbl_listings_sub.Text = "N/A"
         '
         'MaterialDivider4
         '
@@ -209,16 +209,16 @@ Partial Class boutique_dashboard
         Me.MaterialDivider4.TabIndex = 31
         Me.MaterialDivider4.Text = "MaterialDivider4"
         '
-        'active_listings_lbl
+        'lbl_listings_value
         '
-        Me.active_listings_lbl.BackColor = System.Drawing.Color.Transparent
-        Me.active_listings_lbl.Font = New System.Drawing.Font("Helvetica", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.active_listings_lbl.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
-        Me.active_listings_lbl.Location = New System.Drawing.Point(37, 150)
-        Me.active_listings_lbl.Name = "active_listings_lbl"
-        Me.active_listings_lbl.Size = New System.Drawing.Size(285, 56)
-        Me.active_listings_lbl.TabIndex = 30
-        Me.active_listings_lbl.Text = "738"
+        Me.lbl_listings_value.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_listings_value.Font = New System.Drawing.Font("Helvetica", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_listings_value.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
+        Me.lbl_listings_value.Location = New System.Drawing.Point(37, 150)
+        Me.lbl_listings_value.Name = "lbl_listings_value"
+        Me.lbl_listings_value.Size = New System.Drawing.Size(285, 56)
+        Me.lbl_listings_value.TabIndex = 30
+        Me.lbl_listings_value.Text = "0"
         '
         'Label16
         '
@@ -244,10 +244,10 @@ Partial Class boutique_dashboard
         'CuiPanelGradient1
         '
         Me.CuiPanelGradient1.BackColor = System.Drawing.Color.Transparent
-        Me.CuiPanelGradient1.Controls.Add(Me.Label4)
-        Me.CuiPanelGradient1.Controls.Add(Me.Label7)
+        Me.CuiPanelGradient1.Controls.Add(Me.lbl_customers_delta)
+        Me.CuiPanelGradient1.Controls.Add(Me.lbl_customers_sub)
         Me.CuiPanelGradient1.Controls.Add(Me.MaterialDivider3)
-        Me.CuiPanelGradient1.Controls.Add(Me.reg_customers_lbl)
+        Me.CuiPanelGradient1.Controls.Add(Me.lbl_customers_value)
         Me.CuiPanelGradient1.Controls.Add(Me.Label14)
         Me.CuiPanelGradient1.Controls.Add(Me.PictureBox3)
         Me.CuiPanelGradient1.GradientAngle = 0!
@@ -262,26 +262,26 @@ Partial Class boutique_dashboard
         Me.CuiPanelGradient1.Size = New System.Drawing.Size(471, 344)
         Me.CuiPanelGradient1.TabIndex = 92
         '
-        'Label4
+        'lbl_customers_delta
         '
-        Me.Label4.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
-        Me.Label4.Location = New System.Drawing.Point(47, 302)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(202, 19)
-        Me.Label4.TabIndex = 27
-        Me.Label4.Text = "+2 today"
+        Me.lbl_customers_delta.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_customers_delta.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
+        Me.lbl_customers_delta.Location = New System.Drawing.Point(47, 302)
+        Me.lbl_customers_delta.Name = "lbl_customers_delta"
+        Me.lbl_customers_delta.Size = New System.Drawing.Size(408, 19)
+        Me.lbl_customers_delta.TabIndex = 27
+        Me.lbl_customers_delta.Text = "N/A"
         '
-        'Label7
+        'lbl_customers_sub
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
-        Me.Label7.Location = New System.Drawing.Point(47, 222)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(176, 19)
-        Me.Label7.TabIndex = 26
-        Me.Label7.Text = "non-anonymous buyers"
+        Me.lbl_customers_sub.AutoSize = True
+        Me.lbl_customers_sub.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_customers_sub.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
+        Me.lbl_customers_sub.Location = New System.Drawing.Point(47, 222)
+        Me.lbl_customers_sub.Name = "lbl_customers_sub"
+        Me.lbl_customers_sub.Size = New System.Drawing.Size(36, 19)
+        Me.lbl_customers_sub.TabIndex = 26
+        Me.lbl_customers_sub.Text = "N/A"
         '
         'MaterialDivider3
         '
@@ -294,16 +294,16 @@ Partial Class boutique_dashboard
         Me.MaterialDivider3.TabIndex = 25
         Me.MaterialDivider3.Text = "MaterialDivider3"
         '
-        'reg_customers_lbl
+        'lbl_customers_value
         '
-        Me.reg_customers_lbl.BackColor = System.Drawing.Color.Transparent
-        Me.reg_customers_lbl.Font = New System.Drawing.Font("Helvetica", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.reg_customers_lbl.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
-        Me.reg_customers_lbl.Location = New System.Drawing.Point(41, 150)
-        Me.reg_customers_lbl.Name = "reg_customers_lbl"
-        Me.reg_customers_lbl.Size = New System.Drawing.Size(285, 56)
-        Me.reg_customers_lbl.TabIndex = 24
-        Me.reg_customers_lbl.Text = "3"
+        Me.lbl_customers_value.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_customers_value.Font = New System.Drawing.Font("Helvetica", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_customers_value.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
+        Me.lbl_customers_value.Location = New System.Drawing.Point(41, 150)
+        Me.lbl_customers_value.Name = "lbl_customers_value"
+        Me.lbl_customers_value.Size = New System.Drawing.Size(285, 56)
+        Me.lbl_customers_value.TabIndex = 24
+        Me.lbl_customers_value.Text = "0"
         '
         'Label14
         '
@@ -329,10 +329,10 @@ Partial Class boutique_dashboard
         'CuiGradientPanel1
         '
         Me.CuiGradientPanel1.BackColor = System.Drawing.Color.Transparent
-        Me.CuiGradientPanel1.Controls.Add(Me.Label5)
-        Me.CuiGradientPanel1.Controls.Add(Me.Label6)
+        Me.CuiGradientPanel1.Controls.Add(Me.lbl_orders_delta)
+        Me.CuiGradientPanel1.Controls.Add(Me.lbl_orders_sub)
         Me.CuiGradientPanel1.Controls.Add(Me.MaterialDivider1)
-        Me.CuiGradientPanel1.Controls.Add(Me.total_orders_lbl)
+        Me.CuiGradientPanel1.Controls.Add(Me.lbl_orders_value)
         Me.CuiGradientPanel1.Controls.Add(Me.Label12)
         Me.CuiGradientPanel1.Controls.Add(Me.PictureBox1)
         Me.CuiGradientPanel1.GradientAngle = 0!
@@ -347,26 +347,26 @@ Partial Class boutique_dashboard
         Me.CuiGradientPanel1.Size = New System.Drawing.Size(471, 344)
         Me.CuiGradientPanel1.TabIndex = 91
         '
-        'Label5
+        'lbl_orders_delta
         '
-        Me.Label5.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
-        Me.Label5.Location = New System.Drawing.Point(43, 302)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(202, 19)
-        Me.Label5.TabIndex = 21
-        Me.Label5.Text = "+18 today"
+        Me.lbl_orders_delta.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_orders_delta.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
+        Me.lbl_orders_delta.Location = New System.Drawing.Point(43, 302)
+        Me.lbl_orders_delta.Name = "lbl_orders_delta"
+        Me.lbl_orders_delta.Size = New System.Drawing.Size(415, 19)
+        Me.lbl_orders_delta.TabIndex = 21
+        Me.lbl_orders_delta.Text = "N/A"
         '
-        'Label6
+        'lbl_orders_sub
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
-        Me.Label6.Location = New System.Drawing.Point(43, 222)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(173, 19)
-        Me.Label6.TabIndex = 20
-        Me.Label6.Text = "transactions processed"
+        Me.lbl_orders_sub.AutoSize = True
+        Me.lbl_orders_sub.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_orders_sub.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
+        Me.lbl_orders_sub.Location = New System.Drawing.Point(43, 222)
+        Me.lbl_orders_sub.Name = "lbl_orders_sub"
+        Me.lbl_orders_sub.Size = New System.Drawing.Size(36, 19)
+        Me.lbl_orders_sub.TabIndex = 20
+        Me.lbl_orders_sub.Text = "N/A"
         '
         'MaterialDivider1
         '
@@ -379,16 +379,16 @@ Partial Class boutique_dashboard
         Me.MaterialDivider1.TabIndex = 19
         Me.MaterialDivider1.Text = "MaterialDivider1"
         '
-        'total_orders_lbl
+        'lbl_orders_value
         '
-        Me.total_orders_lbl.BackColor = System.Drawing.Color.Transparent
-        Me.total_orders_lbl.Font = New System.Drawing.Font("Helvetica", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.total_orders_lbl.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
-        Me.total_orders_lbl.Location = New System.Drawing.Point(37, 150)
-        Me.total_orders_lbl.Name = "total_orders_lbl"
-        Me.total_orders_lbl.Size = New System.Drawing.Size(285, 56)
-        Me.total_orders_lbl.TabIndex = 18
-        Me.total_orders_lbl.Text = "5,674"
+        Me.lbl_orders_value.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_orders_value.Font = New System.Drawing.Font("Helvetica", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_orders_value.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
+        Me.lbl_orders_value.Location = New System.Drawing.Point(37, 150)
+        Me.lbl_orders_value.Name = "lbl_orders_value"
+        Me.lbl_orders_value.Size = New System.Drawing.Size(285, 56)
+        Me.lbl_orders_value.TabIndex = 18
+        Me.lbl_orders_value.Text = "0"
         '
         'Label12
         '
@@ -414,10 +414,10 @@ Partial Class boutique_dashboard
         'CuiGradientPanel2
         '
         Me.CuiGradientPanel2.BackColor = System.Drawing.Color.Transparent
-        Me.CuiGradientPanel2.Controls.Add(Me.Label3)
-        Me.CuiGradientPanel2.Controls.Add(Me.Label2)
+        Me.CuiGradientPanel2.Controls.Add(Me.lbl_revenue_delta)
+        Me.CuiGradientPanel2.Controls.Add(Me.lbl_revenue_sub)
         Me.CuiGradientPanel2.Controls.Add(Me.MaterialDivider2)
-        Me.CuiGradientPanel2.Controls.Add(Me.total_revenue_lbl)
+        Me.CuiGradientPanel2.Controls.Add(Me.lbl_revenue_value)
         Me.CuiGradientPanel2.Controls.Add(Me.Label1)
         Me.CuiGradientPanel2.Controls.Add(Me.PictureBox2)
         Me.CuiGradientPanel2.GradientAngle = 0!
@@ -432,26 +432,26 @@ Partial Class boutique_dashboard
         Me.CuiGradientPanel2.Size = New System.Drawing.Size(471, 344)
         Me.CuiGradientPanel2.TabIndex = 90
         '
-        'Label3
+        'lbl_revenue_delta
         '
-        Me.Label3.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
-        Me.Label3.Location = New System.Drawing.Point(46, 300)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(144, 19)
-        Me.Label3.TabIndex = 15
-        Me.Label3.Text = "+$340 today"
+        Me.lbl_revenue_delta.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_revenue_delta.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
+        Me.lbl_revenue_delta.Location = New System.Drawing.Point(46, 300)
+        Me.lbl_revenue_delta.Name = "lbl_revenue_delta"
+        Me.lbl_revenue_delta.Size = New System.Drawing.Size(409, 19)
+        Me.lbl_revenue_delta.TabIndex = 15
+        Me.lbl_revenue_delta.Text = "N/A"
         '
-        'Label2
+        'lbl_revenue_sub
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
-        Me.Label2.Location = New System.Drawing.Point(44, 222)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(137, 19)
-        Me.Label2.TabIndex = 14
-        Me.Label2.Text = "after VAT · all time"
+        Me.lbl_revenue_sub.AutoSize = True
+        Me.lbl_revenue_sub.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_revenue_sub.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
+        Me.lbl_revenue_sub.Location = New System.Drawing.Point(44, 222)
+        Me.lbl_revenue_sub.Name = "lbl_revenue_sub"
+        Me.lbl_revenue_sub.Size = New System.Drawing.Size(36, 19)
+        Me.lbl_revenue_sub.TabIndex = 14
+        Me.lbl_revenue_sub.Text = "N/A"
         '
         'MaterialDivider2
         '
@@ -464,16 +464,16 @@ Partial Class boutique_dashboard
         Me.MaterialDivider2.TabIndex = 13
         Me.MaterialDivider2.Text = "MaterialDivider2"
         '
-        'total_revenue_lbl
+        'lbl_revenue_value
         '
-        Me.total_revenue_lbl.BackColor = System.Drawing.Color.Transparent
-        Me.total_revenue_lbl.Font = New System.Drawing.Font("Helvetica", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.total_revenue_lbl.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
-        Me.total_revenue_lbl.Location = New System.Drawing.Point(38, 150)
-        Me.total_revenue_lbl.Name = "total_revenue_lbl"
-        Me.total_revenue_lbl.Size = New System.Drawing.Size(285, 56)
-        Me.total_revenue_lbl.TabIndex = 3
-        Me.total_revenue_lbl.Text = "3,490"
+        Me.lbl_revenue_value.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_revenue_value.Font = New System.Drawing.Font("Helvetica", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_revenue_value.ForeColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(252, Byte), Integer))
+        Me.lbl_revenue_value.Location = New System.Drawing.Point(38, 150)
+        Me.lbl_revenue_value.Name = "lbl_revenue_value"
+        Me.lbl_revenue_value.Size = New System.Drawing.Size(285, 56)
+        Me.lbl_revenue_value.TabIndex = 3
+        Me.lbl_revenue_value.Text = "0"
         '
         'Label1
         '
@@ -531,31 +531,31 @@ Partial Class boutique_dashboard
     Friend WithEvents top_customers_grid As MetroFramework.Controls.MetroGrid
     Friend WithEvents CuiLabel5 As CuoreUI.Controls.cuiLabel
     Friend WithEvents CuiPanelGradient2 As CuoreUI.Controls.cuiPanelGradient
-    Friend WithEvents Label8 As Label
-    Friend WithEvents Label9 As Label
+    Friend WithEvents lbl_listings_delta As Label
+    Friend WithEvents lbl_listings_sub As Label
     Friend WithEvents MaterialDivider4 As ReaLTaiizor.Controls.MaterialDivider
-    Friend WithEvents active_listings_lbl As Label
+    Friend WithEvents lbl_listings_value As Label
     Friend WithEvents Label16 As Label
     Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents CuiPanelGradient1 As CuoreUI.Controls.cuiPanelGradient
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label7 As Label
+    Friend WithEvents lbl_customers_delta As Label
+    Friend WithEvents lbl_customers_sub As Label
     Friend WithEvents MaterialDivider3 As ReaLTaiizor.Controls.MaterialDivider
-    Friend WithEvents reg_customers_lbl As Label
+    Friend WithEvents lbl_customers_value As Label
     Friend WithEvents Label14 As Label
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents CuiGradientPanel1 As CuoreUI.Controls.cuiPanelGradient
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
+    Friend WithEvents lbl_orders_delta As Label
+    Friend WithEvents lbl_orders_sub As Label
     Friend WithEvents MaterialDivider1 As ReaLTaiizor.Controls.MaterialDivider
-    Friend WithEvents total_orders_lbl As Label
+    Friend WithEvents lbl_orders_value As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents CuiGradientPanel2 As CuoreUI.Controls.cuiPanelGradient
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label2 As Label
+    Friend WithEvents lbl_revenue_delta As Label
+    Friend WithEvents lbl_revenue_sub As Label
     Friend WithEvents MaterialDivider2 As ReaLTaiizor.Controls.MaterialDivider
-    Friend WithEvents total_revenue_lbl As Label
+    Friend WithEvents lbl_revenue_value As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox2 As PictureBox
 End Class

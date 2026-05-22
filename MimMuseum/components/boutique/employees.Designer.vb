@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class employees
+Partial Class boutique_employees
     Inherits System.Windows.Forms.UserControl
 
     'UserControl overrides dispose to clean up the component list.
@@ -24,12 +24,13 @@ Partial Class employees
     Private Sub InitializeComponent()
         Me.SuspendLayout()
         '
-        'employees
+        'boutique_employees
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Name = "employees"
-        Me.Size = New System.Drawing.Size(2318, 1177)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(166, Byte), Integer), CType(CType(209, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Name = "boutique_employees"
+        Me.Size = New System.Drawing.Size(2318, 1291)
         Me.ResumeLayout(False)
 
     End Sub
