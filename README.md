@@ -149,7 +149,3 @@ For datasets that don't map directly to schema tables (joined / computed columns
 
 - Windows only.
 - Single-instance. Concurrent access works at the database level, but the UI does not push live updates between running clients.
-
-## License
-
-Academic project. Feel free to fork and learn from it. No warranty.
