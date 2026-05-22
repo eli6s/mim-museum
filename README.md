@@ -28,14 +28,12 @@ Three user roles are supported, each with its own permission scope:
 ## Features
 
 ### Core
-
 - Role-based access control with a centralized permission manager
 - Hashed passwords (BCrypt) and a complete forgot-password / reset code flow
 - Automatic schema creation on first launch, no manual SQL setup required
 - Country data loaded from JSON for easy maintenance without recompilation
 
 ### Museum
-
 - **Minerals catalog** with classifications, sections, country of origin, hardness, fluorescence/radioactivity flags, and optional descriptions
 - **Events** with many-to-many staff assignment and guest registration, plus capacity enforcement
 - **Donations** supporting anonymous donors and optional event linkage
@@ -43,18 +41,15 @@ Three user roles are supported, each with its own permission scope:
 - **Equipment** and **maintenance** with internal vs external service types and a join table for equipment-service associations with per-item costs
 
 ### Boutique
-
 - **Point of Sale** with cart management, walk-in or registered customer support, cash/card payment methods, automatic change calculation, and instant receipt generation
 - **Inventory** with image uploads (UUID-named with automatic cleanup), optional mineral references, low-stock highlighting, and soft deletion
 - **Transactions** browser with line-item drill-down, manager-restricted deletion, and on-demand receipt viewing
 
 ### Reports (RDLC)
-
 - **Receipt**: generated after every sale and viewable from the transactions browser
 - **Inventory snapshot**: printable stock report with low-stock flags
 
 ### UI / UX
-
 - Responsive sidebar navigation with collapsible museum / boutique sections
 - Mode-aware forms with visual ADD / EDIT indicators
 - Shared user controls for the museum / boutique split (DRY principle)
@@ -89,30 +84,39 @@ MimMuseum/
 ### Installation
 
 1. **Clone the repo:**
-    
-    ```bash
-    git clone <your-repo-url>
-    cd mim-museum
-    ```
-    
+   ```bash
+   git clone <your-repo-url>
+   cd mim-museum
+   ```
+
 2. **Open** `MimMuseum.sln` in Visual Studio.
-    
+
 3. **Restore NuGet packages**: Tools -> NuGet Package Manager -> Restore.
-    
+
 4. **Configure the database connection** in `App.config`:
-    
-    ```xml
-    <connectionStrings>
-      <add name="MimMuseum"
-           connectionString="Server=(localdb)\MSSQLLocalDB;Database=mim_museum;Integrated Security=true;"
-           providerName="System.Data.SqlClient"/>
-    </connectionStrings>
-    ```
-    
-5. **Run the seed script** (`seed.sql`) in SQL Server Management Studio or via `sqlcmd`. The schema itself is created automatically on first launch.
-    
-6. **Build & run** (F5). The schema is applied on launch, then the login screen appears.
-    
+   ```xml
+   <connectionStrings>
+     <add name="MimMuseum"
+          connectionString="Server=(localdb)\MSSQLLocalDB;Database=mim_museum;Integrated Security=true;"
+          providerName="System.Data.SqlClient"/>
+   </connectionStrings>
+   ```
+
+5. **Configure SMTP credentials** in `App.config` for the forgot-password flow:
+   ```xml
+   <appSettings>
+     <add key="smtp_host" value="smtp.gmail.com" />
+     <add key="smtp_port" value="587" />
+     <add key="smtp_email" value="your-email@gmail.com" />
+     <add key="smtp_password" value="your-app-password" />
+   </appSettings>
+   ```
+
+   For Gmail, you'll need to generate an [app password](https://myaccount.google.com/apppasswords) rather than using your account password. `App.config` is gitignored, so your credentials stay local.
+
+6. **Run the seed script** (`seed.sql`) in SQL Server Management Studio or via `sqlcmd`. The schema itself is created automatically on first launch.
+
+7. **Build and run** (F5). The schema is applied on launch, then the login screen appears.
 
 ### Default Login
 
@@ -127,8 +131,8 @@ The two RDLC reports (receipt and inventory snapshot) are embedded as resources.
 3. Right-click the project -> Add -> New Item -> Report (`.rdlc`).
 4. Open the Report Data pane (View -> Report Data).
 5. Add datasets matching the names expected by the viewer code:
-    - **receipt.rdlc**: `ds_header` (one row) and `ds_items` (many rows)
-    - **inventory_report.rdlc**: `ds_inventory` (many rows)
+   - **receipt.rdlc**: `ds_header` (one row) and `ds_items` (many rows)
+   - **inventory_report.rdlc**: `ds_inventory` (many rows)
 6. Drag tables, text boxes, and tablixes onto the layout surface.
 7. Set the `.rdlc` file's **Build Action** to **Embedded Resource** so the runtime can resolve it via `MimMuseum.<filename>.rdlc`.
 
@@ -145,3 +149,7 @@ For datasets that don't map directly to schema tables (joined / computed columns
 
 - Windows only.
 - Single-instance. Concurrent access works at the database level, but the UI does not push live updates between running clients.
+
+## License
+
+Academic project. Feel free to fork and learn from it. No warranty.
